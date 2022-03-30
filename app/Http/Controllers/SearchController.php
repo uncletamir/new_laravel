@@ -2,23 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Buku;
+use Request;
 
-class PengajuanController extends Controller
+class SearchController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        // $search = Request::all();
-        // $input = request()->all();
-        // $cari = Buku::where('judul_buku','like','%'.$input.'%')->first();
-        // return view('peminjaman.pengajuan-peminjaman', compact('cari'));
-        return view('peminjaman.pengajuan-peminjaman');
+        //
+    }
+
+    public function search(Request $request)
+    {
+      $input = request()->all();
+      $cari = Buku::where('judul_buku','like','%'.$input.'%')->first();
+      return view('peminjaman.pengajuan-peminjaman', compact('cari'));
     }
 
     /**
@@ -30,13 +34,6 @@ class PengajuanController extends Controller
     {
         //
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
 
     /**
      * Store a newly created resource in storage.
@@ -55,14 +52,9 @@ class PengajuanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show($id)
     {
-
-      // $caridata = $request->input('caridata');
-      // $cari = Buku::where('name','LIKE',"%{$caridata}%")
-      //           ->orWhere('email','LIKE',"%{$caridata}%")
-      //           ->get();
-      // return view('peminjaman.pengajuan-peminjaman',compact('cari'));
+        //
     }
 
     /**
