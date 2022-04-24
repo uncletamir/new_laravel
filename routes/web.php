@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pengguna.login');
+
 });
 
 Route::get('/login', function(){
@@ -39,7 +40,12 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
   Route::resource('user', 'UserController');
   Route::resource('profile', 'ProfileController');
   Route::resource('peminjaman', 'PeminjamanController');
+  Route::get('/search', 'PengajuanController@search')->name('search');
   Route::resource('pengajuan', 'PengajuanController');
+  Route::resource('orang', 'OrangController');
+  Route::get('orang/destroy/{orangId}', 'OrangController@destroy');
+  Route::resource('tambahpengajuan','TambahPengajuanController');
+  // Route::get('/','SearchController@index');
   // Route::get('/tambah-buku', 'BukuController@create')->name('tambah-buku');
   // Route::post('/simpan-buku', 'BukuController@store')->name('simpan-buku');
   // Route::get('/edit-buku/{$id}', 'BukuController@edit')->name('edit-buku');

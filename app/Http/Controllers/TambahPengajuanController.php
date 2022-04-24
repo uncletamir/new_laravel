@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use Gloudemans\Shoppingcart\CartItem;
 
 use App\Buku;
 
-class PengajuanController extends Controller
+class TambahPengajuanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,26 +16,7 @@ class PengajuanController extends Controller
      */
     public function index()
     {
-      $cari = Buku::paginate(2);
-      return view('peminjaman.pengajuan-peminjaman',compact('cari'));
-    }
-
-
-    /**
-     * Display a listing of the resource.
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function search(Request $request)
-    {
-      if(!empty($query = $request->input('judul_buku'))) {
-       $cari = Buku::where('judul_buku', 'like', "%$query%")->paginate(2);
-       return view('peminjaman.pengajuan-peminjaman',compact('cari'));
-       } else {
-         $cari = Buku::paginate(2);
-         return view('peminjaman.pengajuan-peminjaman',compact('cari'));
-       }
-
+        //
     }
 
     /**
@@ -48,13 +30,6 @@ class PengajuanController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -62,7 +37,19 @@ class PengajuanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $buku = Buku::findorfail($request->input('id'));
+        \Cart::add(
+            $buku->id,
+            $buku->judul_buku,
+            $request->input('price'),
+            $request->input('qty'),
+        );
+        // Cart::add(
+        //   $buku->id,
+        //   $buku->judul_buku,
+        // );
+
+        return redirect()->route('pengajuan.index')->with('toast_success', 'Data Buku Berhasil Ditambah');
     }
 
     /**
@@ -71,10 +58,9 @@ class PengajuanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show($id)
     {
-      // $caridata = $request->input('caridata');
-      // dd($caridata);
+        //
     }
 
     /**

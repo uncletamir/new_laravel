@@ -46,13 +46,6 @@
           </a>
           <ul class="nav nav-treeview">
             @if(auth()->user()->level=="admin")
-            <!-- <li class="nav-item">
-              <a href="{{route('halaman-satu')}}" class="nav-link active">
-              <a href="#" class="nav-link active">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Halaman 1</p>
-              </a>
-            </li> -->
             <li class="nav-item">
               <a href="{{route('kategori.index')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
@@ -67,7 +60,7 @@
               </a>
             </li>
           </ul>
-        </li>
+        </li>        
         <!-- End Sidebar kelola buku -->
 
         <!-- kelola data pinjaman -->
@@ -120,6 +113,13 @@
               <!-- <a href="#" class="nav-link active"> -->
                 <i class="far fa-circle nav-icon"></i>
                 <p>Halaman 1</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('orang.index')}}" class="nav-link active">
+              <!-- <a href="#" class="nav-link active"> -->
+                <i class="far fa-circle nav-icon"></i>
+                <p>Kelola Orang</p>
               </a>
             </li>
             <li class="nav-item">

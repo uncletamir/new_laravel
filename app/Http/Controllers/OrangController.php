@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Orang;
 
-use App\Buku;
-
-class PengajuanController extends Controller
+class OrangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,26 +14,8 @@ class PengajuanController extends Controller
      */
     public function index()
     {
-      $cari = Buku::paginate(2);
-      return view('peminjaman.pengajuan-peminjaman',compact('cari'));
-    }
-
-
-    /**
-     * Display a listing of the resource.
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function search(Request $request)
-    {
-      if(!empty($query = $request->input('judul_buku'))) {
-       $cari = Buku::where('judul_buku', 'like', "%$query%")->paginate(2);
-       return view('peminjaman.pengajuan-peminjaman',compact('cari'));
-       } else {
-         $cari = Buku::paginate(2);
-         return view('peminjaman.pengajuan-peminjaman',compact('cari'));
-       }
-
+        $getallorang = Orang::paginate(10);
+        return view('halaman.orang',compact('getallorang'));
     }
 
     /**
@@ -44,15 +25,9 @@ class PengajuanController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('halaman.tambah-orang');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
 
     /**
      * Store a newly created resource in storage.
@@ -62,7 +37,12 @@ class PengajuanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Orang::create([
+          'nama'=>$request->nama,
+          'umur'=>$request->umur,
+        ]);
+
+        return redirect()->route('orang.index')->with('toast_success', 'Data Orang Berhasil Ditambah');
     }
 
     /**
@@ -71,10 +51,9 @@ class PengajuanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show($id)
     {
-      // $caridata = $request->input('caridata');
-      // dd($caridata);
+        //
     }
 
     /**
@@ -85,7 +64,8 @@ class PengajuanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $getorang = Orang::find($id);
+        return view('halaman.edit-orang',compact('getorang'));
     }
 
     /**
@@ -97,7 +77,14 @@ class PengajuanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $getorang = Orang::find($id);
+        $getorang->update($request->all());
+        // $getorang->update([
+        //   'nama'=>$request->nama,
+        //   'umur'=>$request->umur,
+        // ]);
+
+        return redirect()->route('orang.index');
     }
 
     /**
@@ -108,6 +95,8 @@ class PengajuanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $getorang = Orang::find($id);
+        $getorang->delete();
+        return back()->with('toast_warning', 'Data Orang Berhasil Dihapus');
     }
 }

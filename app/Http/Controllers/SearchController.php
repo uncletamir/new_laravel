@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Buku;
+// use Request;
 
-class PengajuanController extends Controller
+class SearchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,27 +15,29 @@ class PengajuanController extends Controller
      */
     public function index()
     {
-      $cari = Buku::paginate(2);
-      return view('peminjaman.pengajuan-peminjaman',compact('cari'));
+      // $input = null;
+      // $input = request()->all();
+      // $cari = Buku::where('judul_buku','like','%'.$input.'%')->first();
+      // return view('peminjaman.pengajuan-peminjaman', compact('cari'));
     }
 
-
-    /**
-     * Display a listing of the resource.
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function search(Request $request)
     {
-      if(!empty($query = $request->input('judul_buku'))) {
-       $cari = Buku::where('judul_buku', 'like', "%$query%")->paginate(2);
-       return view('peminjaman.pengajuan-peminjaman',compact('cari'));
-       } else {
-         $cari = Buku::paginate(2);
-         return view('peminjaman.pengajuan-peminjaman',compact('cari'));
-       }
-
+      if($request->ajax()) {
+        $output="";
+        $bukus= Buku::where('judul_buku','LIKE','%'.$request->search."%")->get();
+        if($bukus){
+          foreach ($bukus as $key => $buku) {
+            $output.='<tr>'/
+            '<td>'.$buku->id.'</td>'.
+            '<td>'.$buku->judul_buku.'</td>'.
+            '<td>'.$buku->pengarang_buku.'</td>'.
+            '</tr>';
+          }
+        }
+      }
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -46,13 +48,6 @@ class PengajuanController extends Controller
     {
         //
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
 
     /**
      * Store a newly created resource in storage.
@@ -71,10 +66,9 @@ class PengajuanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show($id)
     {
-      // $caridata = $request->input('caridata');
-      // dd($caridata);
+        //
     }
 
     /**

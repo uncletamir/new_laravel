@@ -17,7 +17,7 @@ class logincontroller extends Controller
       return view('halaman.halaman-satu');
     }
 
-    return back()->with('info', 'Data Buku Berhasil Dihapus');
+    return back();
   }
 
   public function logout(Request $request)
