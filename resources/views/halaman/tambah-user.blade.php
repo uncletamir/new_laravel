@@ -62,7 +62,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <label for="level">Level</label>
                     <select class="form-control select2 @error('level') is-invalid @enderror" style="width: 50$;" name="level" id="level">
                       <option disabled value>Pilih Level
-                        <!-- <option value="admin">Admin</option> -->
+                        <option value="admin">Admin</option>
                         <option value="user">User</option>
                       </option>
                     </select>

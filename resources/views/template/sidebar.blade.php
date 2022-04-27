@@ -34,7 +34,12 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-
+       <li class="nav-item">
+         <a href="{{route('home.index')}}" class="nav-link">
+           <i class="nav-icon fas fa-home"></i>
+           <p>Home</p>
+         </a>
+       </li>
         <!-- Sidebar kelola buku -->
         <li class="nav-item menu-close">
           <a href="#" class="nav-link active">
@@ -60,7 +65,7 @@
               </a>
             </li>
           </ul>
-        </li>        
+        </li>
         <!-- End Sidebar kelola buku -->
 
         <!-- kelola data pinjaman -->
@@ -138,15 +143,14 @@
           </ul>
         </li>
         <!-- end kelola user -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="{{route('logout')}}" class="nav-link">
             <i class="nav-icon fas fa-power-off"></i>
             <p>
               Logout
-              <!-- <span class="right badge badge-danger">New</span> -->
             </p>
           </a>
-        </li>
+        </li> -->
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

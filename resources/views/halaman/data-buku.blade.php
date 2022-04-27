@@ -50,6 +50,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="card-body">
             <table class="table table-bordered">
               <tr>
+                <th>No</th>
                 <th>Kode Buku</th>
                 <th>Judul Buku</th>
                 <th>Pengaran Buku</th>
@@ -60,6 +61,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </tr>
               @foreach ($books as $item)
               <tr>
+                <td>{{ $books->firstItem() + $loop->index }}</td>
                 <td>{{ $item->kategori->judul_kategori}}</td>
                 <td>{{ $item->judul_buku }}</td>
                 <td>{{ $item->pengarang_buku }}</td>
@@ -82,6 +84,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </tr>
               @endforeach
             </table>
+          </div>
+          <div class="card-footer clearfix">
+            {{ $books->links() }}
           </div>
         </div>
       </div>

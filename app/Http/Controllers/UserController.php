@@ -17,7 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('level','user')->get();
+        // $users = User::where('level','user')->get();
+        $users = User::get();
         return view('halaman/data-user', compact('users'));
     }
 

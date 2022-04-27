@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Buku;
-use App\Kategori;
+use App\User;
+use Hash;
 
-class BukuController extends Controller
+class ForgetPasswordController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +15,7 @@ class BukuController extends Controller
      */
     public function index()
     {
-
-        $books = Buku::with('kategori')->paginate(10);
-        // dd($books);
-        // $books = Buku::paginate(4);
-        return view('halaman.data-buku', compact('books'));
-
-
+        return view ('pengguna.forgetpassword');
     }
 
     /**
@@ -31,8 +25,7 @@ class BukuController extends Controller
      */
     public function create()
     {
-        $kategoris = Kategori::all();
-        return view('halaman.tambah-buku', compact('kategoris'));
+        //
     }
 
     /**
@@ -43,17 +36,17 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        Buku::create([
-          'kode_id' => $request->id,
-          'judul_buku' => $request->judul_buku,
-          'pengarang_buku' => $request->pengarang_buku,
-          'penerbit_buku' => $request->penerbit_buku,
-          'jml_buku' => $request->jml_buku,
+      $request->validate([
+        'email' => 'required|email|exists:users',
+        'password' => 'required|string|min:8|confirmed',
+      ]);
+
+      User::where('email', $request->email)
+       ->update([
+           'password' => Hash::make($request->password),
         ]);
 
-        // return Redirect::back()->withErrors(['msg' => 'The Message']);
-        return redirect()->route('buku.index')->with('toast_success', 'Data Buku Berhasil Ditambah');
+      return redirect('login')->with('warning', 'Password Berhasil Di Rubah');
     }
 
     /**
@@ -75,11 +68,7 @@ class BukuController extends Controller
      */
     public function edit($id)
     {
-
-        $kategoris = Kategori::all();
-        $editbuku = Buku::findorfail($id);
-        return view('halaman/edit-buku',compact('editbuku', 'kategoris'));
-        // return view('halaman.edit-buku');
+        //
     }
 
     /**
@@ -91,10 +80,6 @@ class BukuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $upbuku = Buku::find($id);
-        $upbuku->update($request->all());
-        return redirect()->route('buku.index')->with('toast_success', 'Data Buku Berhasil Dirubah');
-
 
     }
 
@@ -106,9 +91,6 @@ class BukuController extends Controller
      */
     public function destroy($id)
     {
-      $delbuku = Buku::find($id);
-      $delbuku->delete();
-      return back()->with('toast_info', 'Data Buku Berhasil Dihapus');
-
-    }    
+        //
+    }
 }

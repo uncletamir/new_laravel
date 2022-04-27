@@ -51,6 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="card-body">
             <table class="table table-bordered">
               <tr>
+                <th>No</th>
                 <th>Kategori</th>
                 <th>Kode Kategori</th>
                 <th>Opsi</th>
@@ -58,6 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </tr>
               @foreach ($kategoris as $item)
               <tr>
+                <td>{{ $kategoris->firstItem() + $loop->index }}</td>
                 <td>{{ $item->judul_kategori }}</td>
                 <td>{{ $item->kode_kategori }}</td>
                 @if(auth()->user()->level=="admin")
@@ -84,7 +86,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </table>
           </div>
               <div class="card-footer clearfix">
-                {{ $kategoris->links() }}                    
+                {{ $kategoris->links() }}
               </div>
             </div>
         </div>

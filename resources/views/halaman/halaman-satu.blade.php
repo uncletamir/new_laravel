@@ -7,6 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html lang="en">
 <head>
   @include('template.head')
+  @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -27,20 +28,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <h5 class="mb-2">Selamat Datang Di SERMA {{auth()->user()->name}}</h5>
 
         <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>150</h3>
+          @livewire('show-book')
 
-                <p>Jumlah Buku</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
@@ -57,20 +46,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
-
-                <p>Jumlah Pengguna</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
+          @livewire('show-users')
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
@@ -232,5 +208,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 @include('template.script')
+@livewireScripts
 </body>
 </html>

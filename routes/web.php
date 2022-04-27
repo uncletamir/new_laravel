@@ -25,6 +25,7 @@ Route::get('/login', function(){
 Route::post('/postlogin', 'logincontroller@postlogin')->name('postlogin');
 Route::get('/logout', 'logincontroller@logout')->name('logout');
 Route::resource('register', 'RegisterController');
+Route::resource('forget', 'ForgetPasswordController');
 
 // Route::group(['middleware' => ['auth', 'ceklevel:admin']], function() {
 //   Route::resource('home', 'HomeController');

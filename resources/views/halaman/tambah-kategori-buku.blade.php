@@ -47,6 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- form start -->
 
               <form action="{{route('kategori.store')}}" method="post">
+                @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label for="judul_kategori">Kategori Buku</label>
