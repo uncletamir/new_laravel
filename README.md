@@ -1,3 +1,11 @@
+## About Project
+
+The following repo is a learning project in using the larvel framework. Which in the future will be in the form of a book lending system in a library. In this repo there are several packages installed:
+
+- [Livewire](https://laravel-livewire.com/)
+
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
