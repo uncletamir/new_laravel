@@ -94,13 +94,15 @@
                                 <button class="btn btn-danger btn-sm remove-from-cart"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>
+                        <input name="data[]" value="{{ $id }}" />
+                        
                         @endforeach
                         @endif
                     </table>
                 </div>
             </div>
-            <a href="{{ route('pengajuanajax')}}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-                <button class="btn btn-success">Checkout</button>
+            <a href="{{ route('pengajuanajax')}}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Lanjutkan Pencarian Buku</a>
+                <button class="btn btn-success">Ajukan Peminjaman</button>
         </div>
         
 

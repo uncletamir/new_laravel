@@ -51,6 +51,7 @@ class PengajuanAjax extends Controller
         }
           
         session()->put('cart', $cart);
+        
         return redirect()->back()->with('toast_success', 'Product added to cart successfully!');
     }
   
