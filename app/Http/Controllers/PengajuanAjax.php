@@ -14,8 +14,8 @@ class PengajuanAjax extends Controller
      */
     public function index()
     {
-        $products = Buku::all();
-        return view('peminjaman.pengajuan', compact('products'));
+        $books = Buku::all();
+        return view('peminjaman.pengajuan', compact('books'));
     }
   
     /**

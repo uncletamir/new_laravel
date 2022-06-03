@@ -1,4 +1,4 @@
-@extends('peminjaman.pengajuan')
+@extends('peminjaman.pengajuancart')
   
 @section('content')
 <table id="cart" class="table table-hover table-condensed">

@@ -55,6 +55,13 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
   // Route::get('/data-buku', 'BukuController@index')->name('data-buku');
   // Route::post('/edit-buku/{$id}', 'BukuController@update')->name('edit-buku');
 
+  //  Cart Route
+  Route::get('pengajuanajax', 'PengajuanAjax@index')->name('pengajuanajax');  
+  Route::get('cart', 'PengajuanAjax@cart')->name('cart');
+  Route::get('add-to-cart/{id}', 'PengajuanAjax@addToCart')->name('add.to.cart');
+  Route::patch('update-cart', 'PengajuanAjax@update')->name('update.cart');
+  Route::delete('remove-from-cart', 'PengajuanAjax@remove')->name('remove.from.cart');
+
 
 });
 

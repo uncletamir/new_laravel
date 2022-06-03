@@ -114,10 +114,10 @@
           <ul class="nav nav-treeview">
             @if(auth()->user()->level=="admin")
             <li class="nav-item">
-              <a href="{{route('halaman-satu')}}" class="nav-link active">
+              <a href="{{route('pengajuanajax')}}" class="nav-link active">
               <!-- <a href="#" class="nav-link active"> -->
                 <i class="far fa-circle nav-icon"></i>
-                <p>Halaman 1</p>
+                <p>Pengajuan Pinjam Buku</p>
               </a>
             </li>
             <li class="nav-item">
