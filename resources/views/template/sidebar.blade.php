@@ -87,7 +87,7 @@
             </li>
             @endif
             <li class="nav-item">
-              <a href="{{route('pengajuan.index')}}" class="nav-link">
+              <a href="{{route('pengajuanajax')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Pinjam Buku</p>
               </a>

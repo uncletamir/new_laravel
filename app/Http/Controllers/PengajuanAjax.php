@@ -25,7 +25,7 @@ class PengajuanAjax extends Controller
      */
     public function cart()
     {
-        return view('peminjaman.cart');
+        return view('peminjaman.cartpengajuan');
     }
   
     /**
@@ -51,7 +51,7 @@ class PengajuanAjax extends Controller
         }
           
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->back()->with('toast_success', 'Product added to cart successfully!');
     }
   
     /**
@@ -65,7 +65,7 @@ class PengajuanAjax extends Controller
             $cart = session()->get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
             session()->put('cart', $cart);
-            session()->flash('success', 'Cart updated successfully');
+            session()->flash('toast_success', 'Cart updated successfully');
         }
     }
   
@@ -82,7 +82,7 @@ class PengajuanAjax extends Controller
                 unset($cart[$request->id]);
                 session()->put('cart', $cart);
             }
-            session()->flash('success', 'Product removed successfully');
+            session()->flash('toast_success', 'Product removed successfully');
         }
     }
    

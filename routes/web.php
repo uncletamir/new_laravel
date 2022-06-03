@@ -70,7 +70,13 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,user']], function () {
   Route::resource('profile', 'ProfileController');
   // Route::get('/home', 'HomeController@index');
   Route::resource('buku', 'BukuController');
-
   // Route::get('/data-buku', 'BukuController@index')->name('data-buku');
   Route::get('/halaman-dua', 'HomeController@halamandua')->name('halaman-dua');
+  //  Cart Route
+  Route::get('pengajuanajax', 'PengajuanAjax@index')->name('pengajuanajax');  
+  Route::get('cart', 'PengajuanAjax@cart')->name('cart');
+  Route::get('add-to-cart/{id}', 'PengajuanAjax@addToCart')->name('add.to.cart');
+  Route::patch('update-cart', 'PengajuanAjax@update')->name('update.cart');
+  Route::delete('remove-from-cart', 'PengajuanAjax@remove')->name('remove.from.cart');
+
 });

@@ -81,26 +81,34 @@
                             <th>Buku</th>
                             <th>Opsi</th>
                         </tr>
-                        @foreach($books as $book)
-                        <tr>
-                            <td>
-                                <dt>{{ $book ->judul_buku }}</dt>
-                                <dd>Pengarang: {{ $book ->pengarang_buku }}</dd>
-                                <dd>Penerbit: {{ $book ->penerbit_buku }}</dd>
-                                <dd>Tahun: {{ $book ->jml_buku }}</dd>
+                        @if(session('cart'))
+                        @foreach(session('cart') as $id => $details)
+                        <tr data-id="{{ $id }}">
+                            <td data-th="Product">
+                                <dt>{{ $details['name'] }}</dt>
+                                <dd>{{ $details['price'] }}</dd>
+                                <dd>{{ $details['image'] }}</dd>
+                                
                             </td>
-                            <td><p class="btn-holder"><a href="{{ route('add.to.cart', $book->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p></td>
+                            <td class="actions" data-th="">
+                                <button class="btn btn-danger btn-sm remove-from-cart"><i class="fas fa-trash"></i></button>
+                            </td>
                         </tr>
                         @endforeach
+                        @endif
                     </table>
                 </div>
             </div>
+            <a href="{{ route('pengajuanajax')}}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                <button class="btn btn-success">Checkout</button>
         </div>
+        
 
         </div>
+        
 
         
-        @yield('scripts')
+       
         <footer class="main-footer">
                 @include('template.footer')
         </footer>

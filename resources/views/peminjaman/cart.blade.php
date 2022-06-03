@@ -1,12 +1,12 @@
 @extends('peminjaman.pengajuancart')
   
 @section('content')
-<table id="cart" class="table table-hover table-condensed">
+<table id="cart" class="table table-hover text-nowrap">
     <thead>
         <tr>
             <th style="width:50%">Product</th>
             
-            <th style="width:8%">Quantity</th>
+            <th style="width:8%">Opsi</th>
             
             <th style="width:10%"></th>
         </tr>
