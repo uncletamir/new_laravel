@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Buku;
+use App\DataPeminjaman;
 
 class PengajuanAjax extends Controller
 {
@@ -86,6 +87,15 @@ class PengajuanAjax extends Controller
             session()->flash('toast_success', 'Product removed successfully');
         }
     }
+
+
+    // public function store(Request $request)
+    // {
+    //     $cart = session()->get('cart');
+    //     DataPeminjaman::create([
+    //         'user_id' => $request
+    //     ])
+    // }
    
     
 }

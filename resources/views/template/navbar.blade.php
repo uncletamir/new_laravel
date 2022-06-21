@@ -15,7 +15,7 @@
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <!-- Navbar Search -->
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a class="nav-link" data-widget="navbar-search" href="#" role="button">
         <i class="fas fa-search"></i>
       </a>
@@ -34,35 +34,37 @@
           </div>
         </form>
       </div>
-    </li>
+    </li> -->
 
     <!-- Cart Dropdown Menu -->
 
     <!-- Notifications Dropdown Menu -->
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
-        <i class="far fa-bell"></i>
-        <span class="badge badge-warning navbar-badge">15</span>
+        <i class="far fa-copy"></i>
+        <span class="badge badge-danger navbar-badge">{{ count((array) session('cart')) }}</span>
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-        <span class="dropdown-header">15 Notifications</span>
+        <span class="dropdown-header">{{ count((array) session('cart')) }} Buku</span>
         <div class="dropdown-divider"></div>
+        @if(session('cart'))
+          @foreach(session('cart') as $id => $details)
         <a href="#" class="dropdown-item">
-          <i class="fas fa-envelope mr-2"></i> 4 new messages
-          <span class="float-right text-muted text-sm">3 mins</span>
+          <div class="media">
+          <i class="fas fa-book mr-2"></i>
+            <div class="media-body">
+              <h3 class="dropdown-item-title">{{ $details['name'] }}</h3>
+              <p class="text-sm">{{ $details['price'] }}</p>
+              <p class="text-sm text-muted">{{ $details['image'] }}</p>
+            </div>
+              
+          </div>
         </a>
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
-          <i class="fas fa-users mr-2"></i> 8 friend requests
-          <span class="float-right text-muted text-sm">12 hours</span>
-        </a>
+          @endforeach
+        @endif        
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
-          <i class="fas fa-file mr-2"></i> 3 new reports
-          <span class="float-right text-muted text-sm">2 days</span>
-        </a>
-        <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        <a href="{{ route('cart') }}" class="dropdown-item dropdown-footer">See All List</a>
       </div>
     </li>
 
