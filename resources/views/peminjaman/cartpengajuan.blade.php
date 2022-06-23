@@ -30,19 +30,14 @@
             
             <div class="content">
             <div class="card card-info card-outline">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-md-6">
+                <div class="card-body">
+                <label>Buku akan dikembalikan :</label>
+                    <div class="col-5">
                         <div class="form-group">
-                        <label>Date:</label>
-                        <input class="form-control datepicker">
-                        </div>
-                        </div>
-                        <div class="col-md-6">
-                        <div class="card-tools">
-                            
-                        </div>
-                        </div>
+                            <div class="input-group date">
+                                <input type="date" name="tgl_pengembalian" id="tgl_pengembalian" placeholder="Tanggal dikembalikan" class="form-control">
+                            </div>
+                        </div> 
                     </div>
                 </div>
                 <div class="card-body table-responsive p-0">
@@ -74,7 +69,7 @@
                 </div>
             </div>
             <a href="{{ route('pengajuanajax')}}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Lanjutkan Pencarian Buku</a>
-                <button class="btn btn-success">Ajukan Peminjaman</button>
+            <a href="{{route('createpengajuanajax')}}"><button class="btn btn-success">Ajukan Peminjaman</button></a>
         </div>
         
 

@@ -68,6 +68,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
   Route::get('add-to-cart/{id}', 'PengajuanAjax@addToCart')->name('add.to.cart');
   Route::patch('update-cart', 'PengajuanAjax@update')->name('update.cart');
   Route::delete('remove-from-cart', 'PengajuanAjax@remove')->name('remove.from.cart');
+  Route::post('createpengjuanajax', 'PengajuanAjax@store')->name('createpengajuanajax');
 
 
 });

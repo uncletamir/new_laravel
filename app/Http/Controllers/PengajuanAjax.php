@@ -89,13 +89,18 @@ class PengajuanAjax extends Controller
     }
 
 
-    // public function store(Request $request)
-    // {
-    //     $cart = session()->get('cart');
-    //     DataPeminjaman::create([
-    //         'user_id' => $request
-    //     ])
-    // }
+    public function store(Request $request)
+    {
+        $cart = session()->get('cart');
+        $user = $request->  auth()->user()->id;
+        DataPeminjaman::create([
+            'user_id' => $user,
+            'tg;_pengembarlian' => $request->tgl_pengembalian,
+            'list_buku' => $cart,
+        ]);
+
+        return redirect()->route('pengajuanajax')->with('toast_success', 'Data Buku Berhasil Ditambah');
+    }
    
     
 }

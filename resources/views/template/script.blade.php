@@ -9,6 +9,8 @@
  <!-- daterange picker -->
  <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
 
+ <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/daterangepicker/daterangepicker.css" >
+
 
 
 
@@ -70,6 +72,15 @@
         });
     });
   
+</script>
+
+<script>
+  $(document).ready(function() {
+    $('tgl_pengembalian').datepicker({
+  format: 'dd-mm-yyyy',
+    autoclose: true,
+  }); 
+});
 </script>
 
 <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
